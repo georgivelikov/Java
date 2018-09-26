@@ -1,0 +1,2 @@
+place mysql connector and module.xml in \wildfly-13.0.0.Final\modules\system\layers\base\com\mysql\main
+watch this: https://www.google.bg/search?q=persistence+java+ee+connect+to+database&rlz=1C1ASRM_enBG814BG814&oq=persistence+java+ee+connect+to+database&aqs=chrome..69i57.12243j0j8&sourceid=chrome&ie=UTF-8#kpvalbx=1
