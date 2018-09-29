@@ -11,7 +11,7 @@
 <body>
 	<h1>Employees: </h1>
 	<c:forEach var="tempEmployee" items="${ employees }">
-		${ tempEmployee.firstName } ${ tempEmployee.lastName } <br/>
+		${ tempEmployee.fullName } ${ tempEmployee.departments }<br/>
 	</c:forEach>
 </body>
 </html>

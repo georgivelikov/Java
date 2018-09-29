@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Employee;
 import services.EmployeeService;
+import web.models.WebEmployee;
 
 /**
  * Servlet implementation class EmployeeController
@@ -26,7 +26,7 @@ public class EmployeeController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		List<Employee> employees = this.employeeService.findEmployees(10);
+		List<WebEmployee> employees = this.employeeService.findEmployees(5);
 		request.setAttribute("employees", employees);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/employees.jsp");

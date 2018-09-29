@@ -2,10 +2,16 @@ package models;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -36,6 +42,13 @@ public class Employee implements Serializable {
 	
 	@Column(name = "gender")
 	private String gender;
+	
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinTable(name = "dept_emp",
+	    joinColumns = @JoinColumn(name = "emp_no"),
+	    inverseJoinColumns = @JoinColumn(name = "dept_no")
+	)
+	private List<Department> departments;
 	
 	public Long getEmpNo() {
 		return empNo;
@@ -72,5 +85,11 @@ public class Employee implements Serializable {
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+	public List<Department> getDepartments() {
+		return departments;
+	}
+	public void setDepartments(List<Department> departments) {
+		this.departments = departments;
 	}
 }
