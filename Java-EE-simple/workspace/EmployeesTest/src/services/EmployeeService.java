@@ -5,9 +5,11 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.interceptor.Interceptors;
 import javax.transaction.Transactional;
 
 import dao.EmployeeDao;
+import interceptors.TextLoggerInterceptor;
 import models.Employee;
 import web.models.WebEmployee;
 
@@ -18,6 +20,7 @@ public class EmployeeService {
 	private EmployeeDao employeeDao;
 	
 	@Transactional
+	@Interceptors(TextLoggerInterceptor.class)
 	public List<WebEmployee> findEmployees(int limit) {
 		List<Employee> employees = this.employeeDao.findEmployees(limit);
 		List<WebEmployee> webEmployees = new ArrayList<>();
