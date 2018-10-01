@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import jdk.nashorn.internal.ir.EmptyNode;
 import models.Employee;
 
 @Stateless
@@ -18,5 +19,9 @@ public class EmployeeDao {
 	@SuppressWarnings("unchecked")
 	public List<Employee> findEmployees(int limit) {
 		return this.em.createNamedQuery(Employee.FIND_ALL).setMaxResults(limit).getResultList();
+	}
+	
+	public Employee findEmployeeById(Long id) {
+		return this.em.find(Employee.class, id);
 	}
 }

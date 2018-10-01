@@ -20,7 +20,7 @@ public class EmployeeService {
 	private EmployeeDao employeeDao;
 	
 	@Transactional
-	@Interceptors(TextLoggerInterceptor.class)
+	//@Interceptors(TextLoggerInterceptor.class)
 	public List<WebEmployee> findEmployees(int limit) {
 		List<Employee> employees = this.employeeDao.findEmployees(limit);
 		List<WebEmployee> webEmployees = new ArrayList<>();
@@ -31,5 +31,12 @@ public class EmployeeService {
 		}
 		
 		return webEmployees;
+	}
+	
+	@Transactional
+	public WebEmployee findEmployeeById(Long empNo) {
+		Employee e = this.employeeDao.findEmployeeById(empNo);
+		
+		return new WebEmployee(e);
 	}
 }
