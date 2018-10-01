@@ -43,7 +43,7 @@ public class Employee implements Serializable {
 	@Column(name = "gender")
 	private String gender;
 	
-	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name = "dept_emp",
 	    joinColumns = @JoinColumn(name = "emp_no"),
 	    inverseJoinColumns = @JoinColumn(name = "dept_no")
